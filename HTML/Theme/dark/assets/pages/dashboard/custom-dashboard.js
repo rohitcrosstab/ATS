@@ -303,6 +303,51 @@ $(document).ready(function() {
         }
     });
 
+    /*chart_bar_stacked*/
+    var chart = c3.generate({
+        bindto: '#chart1',
+        data: {
+            columns: [
+                ['Applied', 30, 200, 200, 400, 150, 250],
+                ['Interviewing', 130, 100, 100, 200, 150, 50],
+                ['Hired', 230, 200, 300, 300, 250, 250]
+            ],
+            type: 'bar',
+            groups: [
+                ['Applied', 'Interviewing']
+            ],
+
+        },
+        color: {
+            pattern: ['#99D683', '#4C5667', '#01C0C8']
+        },
+        grid: {
+            y: {
+                lines: [{ value: 0 }]
+            }
+        }
+    });
+
+    setTimeout(function() {
+        chart.groups([
+            ['Applied', 'Interviewing', 'Hired']
+        ])
+    }, 1000);
+
+    // setTimeout(function() {
+    //     chart.load({
+    //         columns: [
+    //             ['data4', 100, -50, 150, 200, -300, -100]
+    //         ]
+    //     });
+    // }, 1500);
+
+    setTimeout(function() {
+        chart.groups([
+            ['data1', 'data2', 'data3', 'data4']
+        ])
+    }, 2000);
+
     /*Pie Chart*/
 
     var chart = c3.generate({
@@ -322,5 +367,81 @@ $(document).ready(function() {
         color: {
             pattern: ['#239a55', '#0073aa', '#f1c40f']
         },
+    });
+
+    // Loading Array Data
+    var data = [{
+        id: 0,
+        text: 'Company'
+    }, {
+        id: 1,
+        text: 'Partner 1'
+    }, {
+        id: 2,
+        text: 'Partner 2'
+    }, {
+        id: 3,
+        text: 'Partner 3'
+    }, {
+        id: 4,
+        text: 'Partner 4'
+    }];
+
+    $(".js-example-data-array").select2({
+        data: data
+    });
+
+    //BAR CHART
+    google.charts.load('current', { packages: ['corechart', 'bar'] });
+    google.charts.setOnLoadCallback(drawStacked);
+
+    function drawStacked() {
+        var data = google.visualization.arrayToDataTable([
+            ['Candidates', 'No of Candidates'],
+            ['Application', 7867],
+            ['Phone Screen', 3500],
+            ['MGR Interview', 1109],
+            ['Onsite Interview', 870],
+            ['Offer', 200],
+            ['Hire', 43]
+        ]);
+
+        var options = {
+            title: 'Number of Candidates',
+            chartArea: { width: '50%' },
+            isStacked: true,
+            hAxis: {
+                title: 'Candidates',
+                minValue: 0,
+            },
+            vAxis: {
+                title: 'Stages'
+            },
+            colors: ['#e74c3c']
+        };
+        var chart = new google.visualization.BarChart(document.getElementById('chart_bar'));
+        chart.draw(data, options);
+    }
+
+    // Loading Array Data
+    var data = [{
+        id: 0,
+        text: 'All Position'
+    }, {
+        id: 1,
+        text: 'Web Developer'
+    }, {
+        id: 2,
+        text: 'Business Analyst'
+    }, {
+        id: 3,
+        text: 'Team Lead'
+    }, {
+        id: 4,
+        text: 'Devops Engineer'
+    }];
+
+    $(".js-example-data-array-2").select2({
+        data: data
     });
 });

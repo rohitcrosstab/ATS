@@ -19248,3 +19248,44 @@ body.menu-bottom .navbar-wrapper {
   overflow: visible !important; }
 
 /*# sourceMappingURL=style.css.map */
+
+/* Custom Start */
+.card .card-header .card-header-right {
+  display: flex;
+}
+
+.card .card-header span {
+  margin-top: 0;
+}
+
+#jobs{
+padding: 1em;
+}
+#jobs-card{
+  padding: 0.1rem;
+}
+#jobs_percent{
+  padding-bottom: 30px !important;
+    padding-top: 20px !important;
+}
+
+#red_bg{
+  background-color:#e74c3c  !important;
+}
+#yellow_bg{
+  background-color:#f1c40f !important;
+}
+#blue_bg{
+  background-color:#0073aa  !important;
+}
+
+#res-config{
+table-layout:fixed;
+width: 99.5% !important;
+}
+
+#head-col {
+  color: #ffffff;
+}
+
+/* Custom End */
